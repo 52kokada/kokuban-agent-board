@@ -6,6 +6,13 @@ hand-off and a shared knowledge base, exposed as MCP tools.
 
 Kokuban (黒板) is the Japanese word for blackboard.
 
+<p>
+  <img src="docs/phone-chief-avatar/sessions-dark.png" width="260" alt="Phone page: list of sessions">
+  <img src="docs/phone-chief-avatar/chief-dark.png" width="260" alt="Phone page: a question for the person">
+</p>
+
+The phone page, with test data: the session list, and a question that waits for the person.
+
 ## Features
 
 - `peers` gives each session a unique name and lists the other sessions with their project,
