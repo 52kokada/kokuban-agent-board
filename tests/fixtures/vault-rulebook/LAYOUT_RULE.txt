@@ -1,0 +1,1 @@
+The vault is grouped by business (D101). Each business has its folder: Home, the Pipeline and Care boards, Decisions, Clients/ and Projects/. A client's own repositories sit in its folder's Projects/; tools every business uses are in Shared tools/; a repository nobody could place waits in Unsorted/ until its Overview's front matter names its business.

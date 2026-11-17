@@ -1,0 +1,45 @@
+{
+  "name": "kokuban",
+  "version": "0.4.0",
+  "description": "黒板 — one board for every Claude Code and Codex session on this machine",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kotaro Okada",
+  "bin": {
+    "kokuban": "dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "tools/TerminalTitle",
+    "tools/TerminalPresence",
+    "assets",
+    "README.md",
+    "SPEC.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "tsc && node scripts/copy-voice.mjs",
+    "prepare": "npm run build",
+    "test": "npm run build && node scripts/test.mjs",
+    "test:isolated": "node scripts/test-isolated.mjs",
+    "audit:tokens": "node scripts/token-audit.mjs",
+    "kokuban": "node dist/src/cli.js",
+    "app": "powershell -NoProfile -ExecutionPolicy Bypass -File app-windows/build.ps1",
+    "build:agent-host": "node scripts/build-agent-host.mjs",
+    "build:managed": "node scripts/build-managed.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.302",
+    "qrcode": "1.5.4",
+    "web-push": "3.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/qrcode": "1.5.6",
+    "@types/web-push": "3.6.4",
+    "typescript": "^7.0.2"
+  }
+}

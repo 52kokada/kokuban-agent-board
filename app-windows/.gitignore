@@ -1,0 +1,7 @@
+bin/
+obj/
+out/
+*.user
+.vs/
+Kokuban.App/Assets/icon.ico
+Kokuban.App/Assets/icon-*.png

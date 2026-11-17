@@ -1,0 +1,1 @@
+When you learn two businesses are connected (same client, brand, sister shop or owner), record it with vault write kind=connection and the evidence.

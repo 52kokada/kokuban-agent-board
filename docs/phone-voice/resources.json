@@ -1,0 +1,98 @@
+[
+  {
+    "language": "en",
+    "smallAvailableSeconds": 9.710758,
+    "totalSeconds": 17.6678888,
+    "state": "complete",
+    "small": {
+      "language": "en",
+      "languageProbability": 0.9468500018119812,
+      "durationSeconds": 30,
+      "timing": {
+        "decodeSeconds": 0.034468900004867464,
+        "transcribeSeconds": 5.761276000004727,
+        "totalSeconds": 5.795745200011879,
+        "cpuSeconds": 19.296875
+      },
+      "resources": {
+        "rssBytes": 372424704,
+        "peakRssBytes": 724455424,
+        "privateBytes": 404766720,
+        "cpuSeconds": 20.53125
+      },
+      "busyResources": {
+        "peakRssBytes": 538427392,
+        "peakPrivateBytes": 572178432
+      }
+    },
+    "refined": {
+      "language": "en",
+      "languageProbability": 1,
+      "durationSeconds": 30,
+      "timing": {
+        "decodeSeconds": 0.013064600003417581,
+        "transcribeSeconds": 5.700991100049578,
+        "totalSeconds": 5.714055800053757,
+        "cpuSeconds": 23.546875
+      },
+      "resources": {
+        "rssBytes": 951545856,
+        "peakRssBytes": 1967005696,
+        "privateBytes": 991817728,
+        "cpuSeconds": 26.34375
+      },
+      "busyResources": {
+        "peakRssBytes": 1191424000,
+        "peakPrivateBytes": 1236226048
+      }
+    }
+  },
+  {
+    "language": "ja",
+    "smallAvailableSeconds": 5.017918900000001,
+    "totalSeconds": 13.196138200000002,
+    "state": "complete",
+    "small": {
+      "language": "ja",
+      "languageProbability": 0.9885855317115784,
+      "durationSeconds": 30,
+      "timing": {
+        "decodeSeconds": 0.011203500034753233,
+        "transcribeSeconds": 4.961245699960273,
+        "totalSeconds": 4.97244949999731,
+        "cpuSeconds": 15.828125
+      },
+      "resources": {
+        "rssBytes": 376356864,
+        "peakRssBytes": 724455424,
+        "privateBytes": 409858048,
+        "cpuSeconds": 36.375
+      },
+      "busyResources": {
+        "peakRssBytes": 541462528,
+        "peakPrivateBytes": 578813952
+      }
+    },
+    "refined": {
+      "language": "ja",
+      "languageProbability": 1,
+      "durationSeconds": 30,
+      "timing": {
+        "decodeSeconds": 0.013480600027833134,
+        "transcribeSeconds": 5.987661199993454,
+        "totalSeconds": 6.00114200002281,
+        "cpuSeconds": 24
+      },
+      "resources": {
+        "rssBytes": 951394304,
+        "peakRssBytes": 1967120384,
+        "privateBytes": 991354880,
+        "cpuSeconds": 27
+      },
+      "busyResources": {
+        "peakRssBytes": 1191145472,
+        "peakPrivateBytes": 1234259968
+      }
+    }
+  }
+]

@@ -1,0 +1,7 @@
+export const pushWorker = String.raw`self.addEventListener('install',()=>self.skipWaiting());
+self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+self.addEventListener('push',event=>{event.waitUntil((async()=>{let d;try{d=event.data.json()}catch{d={title:'Kokuban',body:'Open Kokuban for an update.'}}const url=new URL(d.url||'/phone/',self.location.origin);if(url.origin!==self.location.origin||!url.pathname.startsWith('/phone/'))url.href=self.location.origin+'/phone/';await self.registration.showNotification(String(d.title||'Kokuban').slice(0,120),{body:String(d.body||'').slice(0,160),tag:d.tag||'kokuban',data:{url:url.href,id:d.id}});if(d.id)try{await fetch('/phone/push-received',{method:'POST',headers:{'content-type':'application/json','x-kokuban-phone':'1'},body:JSON.stringify({id:d.id})})}catch{} })())});
+self.addEventListener('notificationclick',event=>{event.notification.close();event.waitUntil((async()=>{const url=new URL(event.notification.data?.url||'/phone/',self.location.origin);if(url.origin!==self.location.origin||!url.pathname.startsWith('/phone/'))return;const windows=await clients.matchAll({type:'window',includeUncontrolled:true});for(const w of windows)if(w.url.startsWith(self.location.origin+'/phone/')){await w.navigate(url.href);await w.focus();return}await clients.openWindow(url.href)})())});
+// Authenticated API/transcript/file responses are never cached.
+`;
+

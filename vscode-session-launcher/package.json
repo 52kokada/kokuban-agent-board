@@ -1,0 +1,12 @@
+{
+  "name": "session-launcher",
+  "publisher": "local-kokuban",
+  "displayName": "Kokuban Session Launcher",
+  "version": "0.1.0",
+  "description": "Open exact local Kokuban sessions in VS Code terminal editor tabs.",
+  "engines": { "vscode": "^1.100.0" },
+  "extensionKind": ["ui"],
+  "activationEvents": ["onUri"],
+  "main": "./extension.cjs",
+  "license": "MIT"
+}

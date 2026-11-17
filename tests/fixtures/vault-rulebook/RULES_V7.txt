@@ -1,0 +1,50 @@
+# Vault rules
+
+This vault is shared by Alex, Sam and their agents, and kept by the Kokuban keeper on keeper-pc.
+
+1. The notes are the truth. The hidden index in .keeper/ is rebuilt from them and nobody edits it.
+2. Agents write only through the keeper (Kokuban `vault` tool, op "write"): events, facts, decisions,
+   proposals and summaries. Every write records who, when, the source and a revision in .keeper/revisions.jsonl.
+3. Text between `<!-- keeper:… -->` markers belongs to the keeper. A person may still edit it: the keeper keeps
+   the person's text, records a conflict and lists it on Needs attention.md. Everything else is free to edit.
+4. Clients are identified by their Acme ID (T-…). The folder is "<Business>/Clients/<group>/<Acme ID> <name>"; the ID in Overview.md's
+   front matter is what counts, so a folder may be renamed.
+5. A proposal is not a decision. Only a person's acceptance makes a decision. A fact or decision that contradicts
+   an accepted one is written as a proposal with a "Conflicts with" link, never as a silent override.
+6. Facts are small notes in Facts/. A replaced value stays in its History with when it stopped being valid.
+7. Answers built from the vault end with a "based on" line naming the pages used and when they were updated.
+8. Passwords live on a Credentials page in the space they belong to (decision D99).
+   Agents write them only with kind=credential, never in other notes, and never echo them in chat.
+9. The keeper checks the vault every night and lists what needs a person on Needs attention.md, at the top of the vault.
+10. When you learn two businesses are connected (same client, brand, sister shop or owner), record it with vault write kind=connection and the evidence. The keeper adds the other name as an alias and tells acme-cockpit,
+    which then never sends a first-time email to the connected business.
+11. The vault is grouped by business (D101). Each business has its folder: Home, Decisions, Projects/, Research/
+    and, where it has clients, Clients/ with the Pipeline and Care boards (D126); its Home shows what suits it. A client's own repositories sit in its folder's Projects/; tools every
+    business uses are in Shared tools/; a repository nobody could place waits in Unsorted/ until its Overview's
+    front matter names its business.
+12. Inside each business's Clients/, a client's folder sits in the group of its stage, so the list reads as a work list:
+    1 🔥 Act now (replied, sample-made, engaging, proposal), 2 🛠 Building (signed, building, launch), 3 ⏳ Waiting on them (outreach, sample-sent), 4 💤 Quiet (tagged quiet), 5 ✅ Done (done), 6 🗄 Closed (closed), 0 ❓ No stage.
+    The keeper moves the folder when the stage or tags change. To move a client to another business, write its
+    Overview front matter business (D112); it keeps its ID. Do not move client folders by hand.
+13. Read before you answer (D118): start at [[How this works]], then the space's Overview.md. Find a client with
+    vault op="client" by its Acme ID; never guess a folder name. Current truth is the Overview, Facts/ and the
+    Accepted decisions; log and Work log entries are history, and a proposal is only a suggestion.
+14. Who writes where: people edit any note in Obsidian on any device, except .keeper/ and keeper blocks (rule 3).
+    Agents on every PC never edit, move, rename or delete files in this folder, even though Syncthing would let
+    them: they read with vault op="client", "search" or "read" and write only with vault op="write". Only the
+    keeper on keeper-pc writes; every other PC forwards its writes there.
+15. When the keeper cannot be reached, a write waits in that PC's own .keeper/queue (never synced) and is sent
+    within 30 seconds of the keeper answering; the agent is told "queued". A password is never queued: try again
+    later. A refused write is fixed, not retried as it was, and never worked around by editing files.
+16. What stays out: personal and private matters (health, family, personal money, private messages), other
+    people's personal data beyond the business contact a client gave, raw chat or call transcripts, and security
+    engagement evidence or findings detail (those stay in the engagement's own storage; Security/ holds status
+    only). Passwords only as rule 8 says. When unsure, leave it out and ask a person.
+17. Keep Obsidian healthy: do not rename or move business, group or client folders (the keeper places them);
+    never edit or delete .keeper/; settle a "sync-conflict" copy by merging it into the original and deleting the
+    copy; .obsidian/ (the acme snippet, graph colours, Bases) is shared, so change it on one device and add
+    community plugins only when both people agree; Obsidian Sync stays off, Syncthing carries the vault.
+18. Research (D126) is written with vault write kind=research: one note per subject in <Business>/Research/, with
+    its topic, status (draft, current, superseded), date, confidence, sources and related notes, projects or clients.
+    Related links are what the graph and the research map draw. Security research stays general: no engagement
+    evidence, client names or findings (rule 16).

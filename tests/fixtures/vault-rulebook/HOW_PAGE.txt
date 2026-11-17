@@ -1,0 +1,72 @@
+# How this works
+
+This folder is Alex and Sam's shared memory: every business, client and project, written by the two of you in
+Obsidian and by your agents (Claude Code, Codex and Kimi) through Kokuban. [[Rules]] is the exact rulebook; this
+page is the short version.
+
+## Where the vault lives
+
+| Device | Folder | Syncs by | Obsidian | Writes |
+|---|---|---|---|---|
+| keeper-pc (the hub) | C:\Users\sam\shared-vault | Syncthing, to every PC | not installed | the keeper: all agent writes land here |
+| Alex's PC | C:\Users\alex\shared-vault | Syncthing via keeper-pc | yes | Alex in Obsidian; agents forward to the keeper |
+| pc-b | C:\Users\pat\shared-vault | Syncthing via keeper-pc | yes | Sam in Obsidian; agents forward to the keeper |
+| Sam's MacBook | ~/shared-vault | Syncthing via keeper-pc | yes | Sam in Obsidian; agents forward to the keeper |
+| iPhones | Remotely Save | WebDAV on keeper-pc (tailnet only) | yes | the person holding it |
+
+Every folder is the same "Shared vault" (send and receive) with 30 days of trash-can versioning. Keeper-pc is the hub,
+so a device sees the others' changes once keeper-pc has them.
+
+## How agents use it
+
+- **Reading.** An agent starts at this page and the space's Overview, finds a client by its Acme ID (T-…) with
+  `vault op="client"`, and searches with `vault op="search"`. Answers end with a "based on" line naming the pages.
+- **Writing.** Only through `vault op="write"`: an event, fact, decision, proposal, summary, connection, credential or research note.
+  Each write is sent to the keeper on keeper-pc, which records who, when and the source. Agents never edit, move
+  or delete files here directly, even though they could.
+- **When keeper-pc is down.** The write waits in that PC's own queue and goes through by itself once keeper-pc answers.
+  A password is never left waiting; the agent asks to try again later.
+- **Research.** Research is its own kind of note (`kind=research`): one per subject in a business's Research/ folder,
+  with its topic, status, date, confidence, sources and related notes. The related links are lines in the graph and
+  on the business's research map (a Canvas).
+  Research and learning notes go to Learning/Research/ unless another business's space is named.
+- **Proposals.** An agent that disagrees with an accepted fact or decision writes a proposal. Only a person turns it
+  into a decision.
+- **Every session hears this.** Claude Code and Codex get the vault lines when a session starts, Kimi with its first
+  prompt. All three have the same `vault` tool.
+
+## What each business Home shows
+
+Only a business with clients has the Pipeline and Care boards (Acme, and Harbor Trading since it has a client). The others
+show what suits them: Crypto its research (by topic, the most recent, the research map) and its accepted direction,
+Security the status of its project spaces only (never engagement evidence), and every business its projects. Which
+business has which boards and visuals is a setting (`boards`, `visuals`) on keeper-pc, so it can change.
+
+## What you can edit
+
+Anything, in Obsidian, except the `.keeper/` folder. Text between `<!-- keeper:… -->` markers is the keeper's: you
+may change it, and the keeper keeps your text and lists the clash on [[Needs attention]]. Passwords go only on a
+space's Credentials page.
+
+## What stays out
+
+Personal and private matters, other people's personal data beyond the business contact a client gave, raw chat or call
+transcripts, and security engagement evidence. When in doubt, leave it out.
+
+## Keeping it healthy
+
+- The line at the top of [[Home]] is the sync status: keeper-pc asks its Syncthing which devices are up to date
+  and writes it when that changes, else once an hour ("checked" is when). A "checked" time hours old means the keeper
+  is not running. Its [Syncthing] link (and the "Open Syncthing" bookmark) opens this device's own Syncthing.
+- Do not rename or move business, group ("1 🔥 Act now" …) or client folders: the keeper places them. To move a client,
+  change its Overview's `stage` or `business`.
+- A file named "… sync-conflict-…" means two devices changed one note at once: merge it into the original by hand, then
+  delete the copy. [[Needs attention]] lists what the nightly check-up found.
+- `.obsidian/` is shared: the acme snippet, graph colours and Bases look the same everywhere. Change settings on one
+  device; agree before adding a community plugin. Workspace layout files stay per device and are not synced.
+- Keep Obsidian Sync off: Syncthing carries the vault.
+- Every PC ignores the same files: .keeper/queue, .obsidian/workspace*.json, .trash and .DS_Store.
+- Syncthing on Windows starts from a scheduled task "Syncthing (shared vault)" that runs the WinGet Links path
+  (…\Microsoft\WinGet\Links\syncthing.exe), so an upgrade keeps working. If an upgrade ever points it at a versioned
+  folder, point it back at the Links path.
+- Keeper-pc keeps a nightly Restic backup of the vault.

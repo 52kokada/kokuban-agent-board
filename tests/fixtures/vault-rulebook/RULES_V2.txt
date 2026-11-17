@@ -1,0 +1,19 @@
+# Vault rules
+
+This vault is shared by Alex, Sam and their agents, and kept by the Kokuban keeper on keeper-pc.
+
+1. The notes are the truth. The hidden index in .keeper/ is rebuilt from them and nobody edits it.
+2. Agents write only through the keeper (Kokuban `vault` tool, op "write"): events, facts, decisions,
+   proposals and summaries. Every write records who, when, the source and a revision in .keeper/revisions.jsonl.
+3. Text between `<!-- keeper:… -->` markers belongs to the keeper. A person may still edit it: the keeper keeps
+   the person's text, records a conflict and lists it on Agency/Needs attention.md. Everything else is free to edit.
+4. Clients are identified by their Acme ID (T-…). The folder is "<Acme ID> <name>"; the ID in Overview.md's
+   front matter is what counts, so a folder may be renamed.
+5. A proposal is not a decision. Only a person's acceptance makes a decision. A fact or decision that contradicts
+   an accepted one is written as a proposal with a "Conflicts with" link, never as a silent override.
+6. Facts are small notes in Facts/. A replaced value stays in its History with when it stopped being valid.
+7. Answers built from the vault end with a "based on" line naming the pages used and when they were updated.
+8. Credentials never enter the vault. The keeper refuses text that looks like one.
+9. The keeper checks the vault every night and lists what needs a person on Agency/Needs attention.md.
+10. When you learn two businesses are connected (same client, brand, sister shop or owner), record it with vault write kind=connection and the evidence. The keeper adds the other name as an alias and tells acme-cockpit,
+    which then never sends a first-time email to the connected business.
